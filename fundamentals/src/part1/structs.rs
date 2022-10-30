@@ -1,36 +1,48 @@
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Person {
-    // Add missing members
+    first_name: String,
+    last_name: String,
+    age: u8,
 }
 
 impl Person {
-    pub fn new(first_name: &str, last_name: &str, age: u8) -> Person {
-        unimplemented!()
+    pub fn new(first_name: String, last_name: String, age: u8) -> Person {
+        Person {
+            first_name,
+            last_name,
+            age,
+        }
     }
 
     pub fn first_name(&self) -> &str {
-        unimplemented!()
+        &self.first_name
     }
 
-    pub fn last_name_(&self) -> &str {
-        unimplemented!()
+    pub fn last_name(&self) -> &str {
+        &self.last_name
     }
 
     pub fn age(&self) -> u8 {
-        unimplemented!()
+        self.age
     }
 
-    pub fn full_name(&self) -> &str {
-        unimplemented!()
+    pub fn full_name(&self) -> String {
+        format!("{0} {1}", self.first_name(), self.last_name())
     }
 
-    pub fn change_name(&mut self, first_name: &str, last_name: &str) {
-        unimplemented!()
+    pub fn change_name(&mut self, first_name: String, last_name: String) {
+        self.first_name = first_name;
+        self.last_name = last_name;
     }
 }
 
-fn pretty_print_person(person: &Person) -> &str {
-    unimplemented!()
+fn pretty_print_person(person: &Person) -> String {
+    format!(
+        "{0} {1} is {2} years old.",
+        person.first_name(),
+        person.last_name(),
+        person.age()
+    )
 }
 
 #[cfg(test)]
@@ -46,7 +58,7 @@ mod tests {
     #[test]
     fn test_last_name() {
         let p = get_person();
-        assert_eq!(p.last_name_(), "Nordmann");
+        assert_eq!(p.last_name(), "Nordmann");
     }
 
     #[test]
@@ -66,7 +78,7 @@ mod tests {
         let mut p = get_person();
         assert_eq!(p.full_name(), "Ola Nordmann");
 
-        p.change_name("Per", "Hansen");
+        p.change_name("Per".to_owned(), "Hansen".to_owned());
         assert_eq!(p.full_name(), "Per Hansen");
     }
 
@@ -78,6 +90,6 @@ mod tests {
 
     /// Test setup, to create a person
     fn get_person() -> Person {
-        Person::new("Ola", "Nordmann", 30)
+        Person::new("Ola".to_owned(), "Nordmann".to_owned(), 30)
     }
 }

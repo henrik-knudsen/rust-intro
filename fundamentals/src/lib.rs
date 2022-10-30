@@ -1,5 +1,5 @@
 #![allow(dead_code, unreachable_code, unused_variables)]
 
-mod part1;
-mod part2;
-mod part3;
+pub mod part1;
+pub mod part2;
+pub mod part3;

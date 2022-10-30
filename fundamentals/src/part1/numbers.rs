@@ -1,21 +1,25 @@
 fn add(a: i32, b: i32) -> i32 {
-    unimplemented!()
+    a + b
 }
 
-fn max(a: usize, b: usize) -> i32 {
-    unimplemented!()
+fn max(a: usize, b: usize) -> usize {
+    if a >= b {
+        a
+    } else {
+        b
+    }
 }
 
 fn is_even(n: u128) -> bool {
-    unimplemented!()
+    n % 2 == 0
 }
 
 fn pow(n: usize, exponent: usize) -> usize {
-    unimplemented!()
+    n.pow(exponent as u32)
 }
 
 fn add2(a: u32, b: f64) -> f64 {
-    unimplemented!()
+    a as f64 + b
 }
 
 #[cfg(test)]
@@ -42,7 +46,7 @@ mod tests {
 
     #[test]
     fn test_pow() {
-        assert_eq!(pow(3, 3), 9);
+        assert_eq!(pow(3, 3), 27);
         assert_eq!(pow(2, 8), 256);
     }
 

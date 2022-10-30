@@ -1,7 +1,7 @@
 use std::num::ParseIntError;
 
 fn try_parse_number(x: &str) -> Result<usize, ParseIntError> {
-    unimplemented!()
+    x.parse::<usize>()
 }
 
 /// Different types of version for some API.
@@ -20,7 +20,12 @@ enum VersionParseError {
 
 /// Parses API version from header (bytes)
 fn parse_version(header: &[u8]) -> Result<Version, VersionParseError> {
-    unimplemented!()
+    match header.get(0) {
+        Some(1) => Ok(Version::Version1),
+        Some(2) => Ok(Version::Version2),
+        Some(_) => Err(VersionParseError::InvalidVersion),
+        None => Err(VersionParseError::InvalidHeaderLength),
+    }
 }
 
 #[cfg(test)]

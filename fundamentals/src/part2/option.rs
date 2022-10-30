@@ -1,24 +1,30 @@
 use crate::part1::enums::Coin;
 
 fn get_value_or_panic(x: Option<i32>) -> i32 {
-    unimplemented!()
+    x.unwrap()
 }
 
 fn get_value_or_zero(x: Option<i32>) -> i32 {
-    unimplemented!()
+    x.unwrap_or(0)
 }
 
 fn subtract_one_maybe(x: Option<i32>) -> Option<i32> {
-    unimplemented!()
+    let value = x?;
+
+    Some(value - 1)
 }
 
 /// Divide, if denominator is not 0.
 fn divide(numerator: f64, denominator: f64) -> Option<f64> {
-    unimplemented!()
+    if denominator != 0.0 {
+        Some(numerator / denominator)
+    } else {
+        None
+    }
 }
 
 fn convert_if_some(x: Option<Coin>) -> Option<u8> {
-    unimplemented!()
+    x.and_then(|c| Some(c.value_in_cents()))
 }
 
 #[cfg(test)]
