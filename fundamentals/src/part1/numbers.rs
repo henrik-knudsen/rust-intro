@@ -1,25 +1,21 @@
 fn add(a: i32, b: i32) -> i32 {
-    a + b
+    unimplemented!()
 }
 
 fn max(a: usize, b: usize) -> usize {
-    if a >= b {
-        a
-    } else {
-        b
-    }
+    unimplemented!()
 }
 
 fn is_even(n: u128) -> bool {
-    n % 2 == 0
+    unimplemented!()
 }
 
 fn pow(n: usize, exponent: usize) -> usize {
-    n.pow(exponent as u32)
+    unimplemented!()
 }
 
 fn add2(a: u32, b: f64) -> f64 {
-    a as f64 + b
+    unimplemented!()
 }
 
 #[cfg(test)]

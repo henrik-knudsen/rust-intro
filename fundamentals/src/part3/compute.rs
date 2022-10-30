@@ -1,3 +1,4 @@
+#![allow(unused_mut)]
 use rand::Rng;
 use std::{
     sync::{Arc, Mutex},
@@ -19,23 +20,9 @@ pub fn compute_with_threads_mutex_arc(
         .collect();
 
     let persons_arc = Arc::new(persons_chuncked);
-
-    let mut handles = Vec::with_capacity(NUM_THREADS);
     let result = Mutex::new(0);
 
-    for i in 0..NUM_THREADS {
-        let persons_arc_copy = Arc::clone(&persons_arc);
-
-        let handle = thread::spawn(move || work(&persons_arc_copy[i]));
-        handles.push(handle);
-    }
-
-    for handle in handles {
-        match handle.join() {
-            Ok(value) => *result.lock().unwrap() += value,
-            Err(e) => eprintln!("{e:?}"),
-        }
-    }
+    // Add missing code to compute, using NUM_THREADS number of threads and mutex / arc combination
 
     result.into_inner().unwrap()
 }
@@ -47,20 +34,10 @@ pub fn compute_with_threads_channels(persons: &Vec<Person>, work: fn(&[Person]) 
         .collect();
     let persons_arc = Arc::new(persons_chuncked);
 
-    let (tx, rx) = std::sync::mpsc::channel();
+    let (tx, rx) = std::sync::mpsc::channel::<usize>();
     let mut result = 0;
 
-    for i in 0..NUM_THREADS {
-        let tx = tx.clone();
-        let persons_arc_copy = Arc::clone(&persons_arc);
-
-        thread::spawn(move || tx.send(work(&persons_arc_copy[i])).unwrap());
-    }
-
-    for _ in 0..NUM_THREADS {
-        let intermediate = rx.recv().unwrap();
-        result += intermediate;
-    }
+    // Add missing code to compute, using NUM_THREADS number of threads and channels
 
     result
 }
@@ -70,22 +47,10 @@ pub fn compute_with_threads_scoped(persons: &Vec<Person>, work: fn(&[Person]) ->
     let mut persons_chuncked = persons.chunks(persons.len() / NUM_THREADS);
 
     let result = thread::scope(|s| {
-        let mut handles = Vec::with_capacity(NUM_THREADS);
-        let mut result = 0;
+        // Add missing code to compute, using NUM_THREADS number of threads.
+        // NB: No mutex or arc should be needed.
 
-        for i in 0..NUM_THREADS {
-            let chunk = persons_chuncked.next().unwrap();
-            let handle = s.spawn(move || work(chunk));
-            handles.push(handle);
-        }
-
-        for handle in handles {
-            match handle.join() {
-                Ok(value) => result += value,
-                Err(e) => eprintln!("{e:?}"),
-            }
-        }
-        result
+        0
     });
 
     result

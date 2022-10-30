@@ -7,41 +7,32 @@ pub struct Cat;
 
 impl Animal for Duck {
     fn make_sound(&self) -> &'static str {
-        "Quack"
+        unimplemented!();
     }
 }
 
 impl Animal for Cat {
     fn make_sound(&self) -> &'static str {
-        "Meow"
+        unimplemented!();
     }
 }
 
 /// Repeat sound of animal three times.
 /// Type of animal (T) is known at compile time. (Static dispatch)
 fn repeat_sound_three_times<T: Animal>(animal: T) -> String {
-    format!(
-        "{} {} {}",
-        animal.make_sound(),
-        animal.make_sound(),
-        animal.make_sound()
-    )
+    unimplemented!();
 }
 
 /// Collects all the sounds of the animals in a Vec
 /// Type of animals (&dyn Animal) are not known at compile time. (Dynamic dispatch)
 fn get_all_sounds(animals: &Vec<&dyn Animal>) -> Vec<String> {
-    animals.iter().map(|a| a.make_sound().to_owned()).collect()
+    unimplemented!();
 }
 
 /// Creates an animal based on sound given as argument, if it is a valid sound.
 /// Look at boxes module for how to construct a Box of something.
 fn construct_animal_by_sound(sound: &str) -> Option<Box<dyn Animal>> {
-    match sound {
-        "Quack" => Some(Box::new(Duck)),
-        "Meow" => Some(Box::new(Cat)),
-        _ => None,
-    }
+    unimplemented!();
 }
 
 #[cfg(test)]

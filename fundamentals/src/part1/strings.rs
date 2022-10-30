@@ -1,9 +1,9 @@
 fn say_hello(name: &str) -> String {
-    format!("Hello {}", name)
+    unimplemented!();
 }
 
 fn concat_strings(tuple: (&str, &str)) -> String {
-    format!("{}{}", tuple.0, tuple.1)
+    unimplemented!();
 }
 
 #[cfg(test)]

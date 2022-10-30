@@ -1,48 +1,36 @@
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Person {
-    first_name: String,
-    last_name: String,
-    age: u8,
+    // Add Members
 }
 
 impl Person {
     pub fn new(first_name: String, last_name: String, age: u8) -> Person {
-        Person {
-            first_name,
-            last_name,
-            age,
-        }
+        unimplemented!();
     }
 
     pub fn first_name(&self) -> &str {
-        &self.first_name
+        unimplemented!();
     }
 
     pub fn last_name(&self) -> &str {
-        &self.last_name
+        unimplemented!();
     }
 
     pub fn age(&self) -> u8 {
-        self.age
+        unimplemented!();
     }
 
     pub fn full_name(&self) -> String {
-        format!("{0} {1}", self.first_name(), self.last_name())
+        unimplemented!();
     }
 
     pub fn change_name(&mut self, first_name: String, last_name: String) {
-        self.first_name = first_name;
-        self.last_name = last_name;
+        unimplemented!();
     }
 }
 
 fn pretty_print_person(person: &Person) -> String {
-    format!(
-        "{0} {1} is {2} years old.",
-        person.first_name(),
-        person.last_name(),
-        person.age()
-    )
+    unimplemented!();
 }
 
 #[cfg(test)]

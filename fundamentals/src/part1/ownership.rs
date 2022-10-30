@@ -3,7 +3,9 @@
 
 // TASK 1: Allow for mutability
 fn mutability() -> String {
-    let mut text = String::from("this is a ");
+    unimplemented!();
+
+    let text = String::from("this is a ");
 
     text.push_str("mutable string");
 
@@ -12,6 +14,7 @@ fn mutability() -> String {
 
 // TASK 2: Avoid ownership violation
 fn borrow_after_move() -> String {
+    unimplemented!();
     // The following code will make a copy of x in y and store both on the stack. This can be done
     // since they both have a known size at compile time.
     let x: i32 = 5;
@@ -24,31 +27,31 @@ fn borrow_after_move() -> String {
     // When assigning s1 to s2 the data is moved to s2. Using s1 after moving it
     // will result in a compilation error
     let s1 = String::from("hello");
-    let s2 = s1.to_owned();
+    let s2 = s1;
 
     format!("text = {}, text2 = {}", s1, s2)
 }
 
 // TASK 3: Send reference to function instead of moving ownership
 fn ownership_functions() -> String {
+    unimplemented!();
     // Passing a variable to a functions also moves it.
     // Change calculate_length so that it takes in a reference to s string instead, and
     // pass in a reference to 'text'. This will keep the ownership of text from being moved.
     let text: String = String::from("this prefix");
-    let text_length = calculate_length(&text);
+    let text_length = calculate_length(text);
 
     format!("{} is of length {}", text, text_length)
 }
 
-fn calculate_length(s: &str) -> usize {
+fn calculate_length(s: String) -> usize {
     s.len()
 }
 
 // TASK 4: Invoke append_string with a mutable reference.
 fn mutable_reference() -> String {
+    unimplemented!();
     let mut text = String::from("this is a ");
-
-    append_string(&mut text);
 
     text
 }

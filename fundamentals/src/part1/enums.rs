@@ -9,23 +9,12 @@ pub enum Coin {
 
 impl Coin {
     pub fn value_in_cents(&self) -> u8 {
-        match self {
-            Coin::Penny => 1,
-            Coin::Nickel => 5,
-            Coin::Dime => 10,
-            Coin::Quarter => 25,
-        }
+        unimplemented!()
     }
 }
 
 fn max(coin1: Coin, coin2: Coin) -> Coin {
-    let value1 = coin1.value_in_cents();
-    let value2 = coin2.value_in_cents();
-
-    match value1 >= value2 {
-        true => coin1,
-        false => coin2,
-    }
+    unimplemented!()
 }
 
 /// Complex enum (commonly known as Algebraic datatypes), which can have different kinds of values.
@@ -45,11 +34,7 @@ enum WebEvent {
 impl WebEvent {
     /// Returns true if event was some sort of user interaction
     pub fn is_user_interaction(&self) -> bool {
-        match self {
-            WebEvent::KeyPress(_) | WebEvent::Paste(_) => true,
-            WebEvent::Click { x, y } => true,
-            _ => false,
-        }
+        unimplemented!()
     }
 }
 

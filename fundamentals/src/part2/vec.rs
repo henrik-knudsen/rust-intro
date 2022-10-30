@@ -1,50 +1,40 @@
 use crate::part1::{enums::Coin, structs::Person};
 
 fn compute_sum_of_numbers(numbers: Vec<usize>) -> usize {
-    numbers.iter().sum()
+    unimplemented!();
 }
 
 fn find_even_numbers(numbers: Vec<usize>) -> Vec<usize> {
-    numbers.iter().filter(|x| *x % 2 == 0).copied().collect()
+    unimplemented!();
 }
 
 fn find_positive_numbers(numbers: Vec<isize>) -> Vec<isize> {
-    numbers.iter().filter(|x| **x > 0).copied().collect()
+    unimplemented!();
 }
 
 fn find_largest_coin(coins: Vec<Coin>) -> Option<Coin> {
-    coins
-        .iter()
-        .max_by(|c1, c2| c1.value_in_cents().cmp(&c2.value_in_cents()))
-        .copied()
+    unimplemented!();
 }
 
 fn find_last_number_or_zero(numbers: Vec<usize>) -> usize {
-    *numbers.last().unwrap_or(&0)
+    unimplemented!();
 }
 
 fn find_total_age(persons: Vec<Person>) -> usize {
-    persons.iter().map(|p| p.age() as usize).sum()
+    unimplemented!();
 }
 
 fn find_sub_list_from_predicate(
     persons: Vec<Person>,
     predicate: fn(&Person) -> bool,
 ) -> Vec<Person> {
-    persons.iter().filter(|p| predicate(&p)).cloned().collect()
+    unimplemented!();
 }
 
 // Duplicates elements in vector
 // Example: [1, 5, 2] -> [1, 1, 5, 5, 2, 2]
 fn duplicate(elements: Vec<usize>) -> Vec<usize> {
-    let mut result = Vec::with_capacity(elements.len() * 2);
-
-    for element in elements {
-        result.push(element);
-        result.push(element);
-    }
-
-    result
+    unimplemented!();
 }
 
 #[cfg(test)]
