@@ -10,16 +10,8 @@ use crate::part1::structs::Person;
 const NUM_THREADS: usize = 10;
 
 /// See: https://doc.rust-lang.org/std/sync/struct.Mutex.html
-pub fn compute_with_threads_mutex_arc(
-    persons: &Vec<Person>,
-    work: fn(&[Person]) -> usize,
-) -> usize {
-    let persons_chuncked: Vec<Vec<Person>> = persons
-        .chunks(persons.len() / NUM_THREADS)
-        .map(|p| p.to_owned())
-        .collect();
-
-    let persons_arc = Arc::new(persons_chuncked);
+pub fn compute_with_threads_mutex_arc(persons: Vec<Person>, work: fn(&[Person]) -> usize) -> usize {
+    let persons_arc = Arc::new(persons);
     let result = Mutex::new(0);
 
     // Add missing code to compute, using NUM_THREADS number of threads and mutex / arc combination
@@ -27,13 +19,8 @@ pub fn compute_with_threads_mutex_arc(
     result.into_inner().unwrap()
 }
 /// See: https://doc.rust-lang.org/std/sync/mpsc/index.html
-pub fn compute_with_threads_channels(persons: &Vec<Person>, work: fn(&[Person]) -> usize) -> usize {
-    let persons_chuncked: Vec<Vec<Person>> = persons
-        .chunks(persons.len() / NUM_THREADS)
-        .map(|p| p.to_owned())
-        .collect();
-    let persons_arc = Arc::new(persons_chuncked);
-
+pub fn compute_with_threads_channels(persons: Vec<Person>, work: fn(&[Person]) -> usize) -> usize {
+    let persons_arc = Arc::new(persons);
     let (tx, rx) = std::sync::mpsc::channel::<usize>();
     let mut result = 0;
 
@@ -83,7 +70,7 @@ mod tests {
 
         let expected: usize = work(&persons);
 
-        let actual = compute_with_threads_mutex_arc(&persons, work);
+        let actual = compute_with_threads_mutex_arc(persons, work);
 
         assert_eq!(expected, actual);
     }
@@ -96,7 +83,7 @@ mod tests {
 
         let expected: usize = work(&persons);
 
-        let actual = compute_with_threads_channels(&persons, work);
+        let actual = compute_with_threads_channels(persons, work);
 
         assert_eq!(expected, actual);
     }
