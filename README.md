@@ -1,7 +1,5 @@
 # Introduction to Rust (2022)
 
-Inspired by and partially based on: <https://github.com/arild/rust-workshop>
-
 ## Installing
 
 **rustup** is an installer for the systems programming language Rust. 
