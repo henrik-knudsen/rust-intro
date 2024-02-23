@@ -1,4 +1,4 @@
-# Introduction to Rust (2022)
+# Introduction to Rust (2024)
 
 ## Installing
 
@@ -8,7 +8,7 @@
 - Download rustup executable
 - Run it to install rustc (compiler), cargo (package manager) and other dependencies.
 
-In order to check that everything is set up correctly afterwards (current latest version is 1.64.0):
+In order to check that everything is set up correctly afterwards (current latest version is 1.76.0):
 
 ``rustc --version``
 
@@ -26,9 +26,14 @@ In order to check that everything is set up correctly afterwards (current latest
 
 OR
 
-- **IntelliJ**, with IntelliJ rust plugin (may require license for the specific IDE you want to use, IntelliJ Idea or CLion)
+- **IntelliJ**, with IntelliJ rust plugin (may require license for the specific IDE you want to use, IntelliJ Rustrover, Idea or CLion)
 
-Vscode with rust analyzer plugin provides a good developer experience and can be a nice starting point.
+OR
+
+- Any editor of your choosing, which supports rust analyzer LSP (VIM etc.)
+
+
+Vscode with rust analyzer plugin provides a good developer experience and can be a nice starting point, if you have no strong preference.
 
 ## Fundamentals
 
